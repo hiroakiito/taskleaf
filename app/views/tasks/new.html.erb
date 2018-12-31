@@ -5,7 +5,10 @@
   <%= link_to '一覧', tasks_path, class: 'nav-link' %>
 </div>
 
-<% if @task.errors.present? %>
+<%= render partial: 'form', locals: { task: @task } %>
+
+<!-- 確認画面用 -->
+<!-- <% if @task.errors.present? %>
   <ul id="error_explanation">
     <%= @task.errors.full_messages.each do |message| %>
       <li><%= message %></li>
@@ -23,4 +26,4 @@
     <%= f.text_area :description, row: 5, class: 'form-control', id: 'task_description' %>
   </div>
   <%= f.submit '確認', class: 'btn btn-primary' %>
-<% end %>
+<% end %> -->
