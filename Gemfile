@@ -64,3 +64,6 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bootstrap'
 gem 'rails_autolink'
+gem 'ransack'
+gem 'kaminari'
+gem 'sidekiq'
