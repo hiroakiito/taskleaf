@@ -3,7 +3,7 @@ class TasksController < ApplicationController
 
   def index
     @q = current_user.tasks.ransack(params[:q])
-    @tasks = @q.result(distinct: true)
+    @tasks = @q.result(distinct: true).page(params[:page])
 
     respond_to do |format|
       format.html
@@ -51,6 +51,11 @@ class TasksController < ApplicationController
   def confirm_new
     @task = current_user.tasks.new(task_params)
     render :new unless @task.valid?
+  end
+
+  def import
+    current_user.tasks.import(params[:file])
+    redirect_to tasks_url, notice: "タスクを追加しました"
   end
 
   private
